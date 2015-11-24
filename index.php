@@ -44,7 +44,6 @@
       <ul class="nav navbar-nav">
         <li><a href ng-click="tab = 1">Nginx Django</a></li>
         <li><a href ng-click="tab = 2">Htaccess Redirect</a></li>
-        <li><a href ng-click="tab = 3">Test</a></li>
       </ul>
     </div><!--/.nav-collapse -->
   </div>
