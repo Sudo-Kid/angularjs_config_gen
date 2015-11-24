@@ -29,52 +29,67 @@
     </style>
   </head>
 <body>
-<section>
-  <ul class="nav nav-pills">
-    <li><a href ng-click="tab = 1">Nginx Django</a></li>
-    <li><a href ng-click="tab = 2">Htaccess Redirect</a></li>
-    <li><a href ng-click="tab = 3">Test</a></li>
-  </ul>
-</section>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Project name</a>
+    </div>
+    <div id="navbar" class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+        <li><a href ng-click="tab = 1">Nginx Django</a></li>
+        <li><a href ng-click="tab = 2">Htaccess Redirect</a></li>
+        <li><a href ng-click="tab = 3">Test</a></li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div>
+</nav>
 
 <div class="container">
+  <div class="starter-template">
 
-  <div class="panel" ng-show="tab === 1">
-    <form name="settingsNginxDjango" ng-controller="NginxDjangoController as configCrtl"
-          ng-submit="configCtrl.addSettings(settings)" novalidate>
-      <label>Domain:</label>
-      <input type="text" name="domain" ng-model="configCrtl.settings.domain" required />
-      <input type="submit" value="Submit">
+    <div class="panel" ng-show="tab === 1">
+      <form name="settingsNginxDjango" ng-controller="NginxDjangoController as configCrtl"
+            ng-submit="configCtrl.addSettings(settings)" novalidate>
+        <label>Domain:</label>
+        <input type="text" name="domain" ng-model="configCrtl.settings.domain" required />
+        <input type="submit" value="Submit">
 
+          <?php
+            include __DIR__.'/includes/nginx-django.html';
+          ?>
+        </pre>
+      </form>
+    </div>
+
+    <div class="panel" ng-show="tab === 2">
+      <form name="settingsHtaccessRedirect" ng-controller="HtaccessRedirectController as configCrtl"
+            ng-submit="configCtrl.addSettings(settings)" novalidate>
+        <label>Domain: </label>
+        <input type="text" name="domain" ng-model="configCrtl.settings.domain" />
+        <label>TLD: </label>
+        <input type="text" name="tld" ng-model="configCrtl.settings.tld" />
+        <label>Redirect URI: </label>
+        <input type="url" name="redirectURI" ng-model="configCrtl.settings.redirectURI" />
         <?php
-          include __DIR__.'/includes/nginx-django.html';
+          include __DIR__.'/includes/htaccess-redirect.html';
         ?>
+      </form>
+    </div>
+
+    <div class="panel" ng-show="tab == 3">
+      <pre>
+    My Test!
+    Second Test!!
       </pre>
-    </form>
-  </div>
+    </div>
 
-  <div class="panel" ng-show="tab === 2">
-    <form name="settingsHtaccessRedirect" ng-controller="HtaccessRedirectController as configCrtl"
-          ng-submit="configCtrl.addSettings(settings)" novalidate>
-      <label>Domain: </label>
-      <input type="text" name="domain" ng-model="configCrtl.settings.domain" />
-      <label>TLD: </label>
-      <input type="text" name="tld" ng-model="configCrtl.settings.tld" />
-      <label>Redirect URI: </label>
-      <input type="url" name="redirectURI" ng-model="configCrtl.settings.redirectURI" />
-      <?php
-        include __DIR__.'/includes/htaccess-redirect.html';
-      ?>
-    </form>
   </div>
-
-  <div class="panel" ng-show="tab == 3">
-    <pre>
-  My Test!
-  Second Test!!
-    </pre>
-  </div>
-
 </div>
 
 <footer>
