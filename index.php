@@ -73,9 +73,7 @@ Second Test!!
 
 <footer>
 	<div>
-		::before
 		<p>This page is powered by the code on <a href="https://github.com/the-kid89/angularjs_config_gen">GitHub</a></p>
-		::after
 	</div>
 </footer>
 </body>
