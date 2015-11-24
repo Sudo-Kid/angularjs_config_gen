@@ -58,7 +58,7 @@
             ng-submit="configCtrl.addSettings(settings)" novalidate>
         <label>Domain:</label>
         <input type="text" name="domain" ng-model="configCrtl.settings.domain" required />
-        <input type="submit" value="Submit">
+        <!-- <input type="submit" value="Submit"> -->
 
           <?php
             include __DIR__.'/includes/nginx-django.html';
