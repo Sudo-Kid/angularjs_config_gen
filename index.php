@@ -36,45 +36,51 @@
     <li><a href ng-click="tab = 3">Test</a></li>
   </ul>
 </section>
-<div class="panel" ng-show="tab === 1">
-  <form name="settingsNginxDjango" ng-controller="NginxDjangoController as configCrtl"
-        ng-submit="configCtrl.addSettings(settings)" novalidate>
-    <label>Domain:</label>
-    <input type="text" name="domain" ng-model="configCrtl.settings.domain" required />
-    <input type="submit" value="Submit">
 
+<div class="container">
+
+  <div class="panel" ng-show="tab === 1">
+    <form name="settingsNginxDjango" ng-controller="NginxDjangoController as configCrtl"
+          ng-submit="configCtrl.addSettings(settings)" novalidate>
+      <label>Domain:</label>
+      <input type="text" name="domain" ng-model="configCrtl.settings.domain" required />
+      <input type="submit" value="Submit">
+
+        <?php
+          include __DIR__.'/includes/nginx-django.html';
+        ?>
+      </pre>
+    </form>
+  </div>
+
+  <div class="panel" ng-show="tab === 2">
+    <form name="settingsHtaccessRedirect" ng-controller="HtaccessRedirectController as configCrtl"
+          ng-submit="configCtrl.addSettings(settings)" novalidate>
+      <label>Domain: </label>
+      <input type="text" name="domain" ng-model="configCrtl.settings.domain" />
+      <label>TLD: </label>
+      <input type="text" name="tld" ng-model="configCrtl.settings.tld" />
+      <label>Redirect URI: </label>
+      <input type="url" name="redirectURI" ng-model="configCrtl.settings.redirectURI" />
       <?php
-      	include __DIR__.'/includes/nginx-django.html';
+        include __DIR__.'/includes/htaccess-redirect.html';
       ?>
+    </form>
+  </div>
+
+  <div class="panel" ng-show="tab == 3">
+    <pre>
+  My Test!
+  Second Test!!
     </pre>
-  </form>
-</div>
+  </div>
 
-<div class="panel" ng-show="tab === 2">
-	<form name="settingsHtaccessRedirect" ng-controller="HtaccessRedirectController as configCrtl"
-				ng-submit="configCtrl.addSettings(settings)" novalidate>
-		<label>Domain: </label>
-		<input type="text" name="domain" ng-model="configCrtl.settings.domain" />
-		<label>TLD: </label>
-		<input type="text" name="tld" ng-model="configCrtl.settings.tld" />
-		<label>Redirect URI: </label>
-		<input type="url" name="redirectURI" ng-model="configCrtl.settings.redirectURI" />
-  	<?php
-  		include __DIR__.'/includes/htaccess-redirect.html';
-  	?>
-</div>
-
-<div class="panel" ng-show="tab == 3">
-	<pre>
-My Test!
-Second Test!!
-	</pre>
 </div>
 
 <footer>
-	<div class="container">
-		<p>This page is powered by the code on <a href="https://github.com/the-kid89/angularjs_config_gen">GitHub</a></p>
-	</div>
+  <div class="container">
+    <p>This page is powered by the code on <a href="https://github.com/the-kid89/angularjs_config_gen">GitHub</a></p>
+  </div>
 </footer>
 </body>
 </html>
