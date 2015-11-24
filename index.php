@@ -82,13 +82,6 @@
       </form>
     </div>
 
-    <div class="panel" ng-show="tab == 3">
-      <pre>
-    My Test!
-    Second Test!!
-      </pre>
-    </div>
-
   </div>
 </div>
 
