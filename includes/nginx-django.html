@@ -1,0 +1,42 @@
+<pre>
+server {
+    listen 80;
+    server_name {{configCrtl.settings.domain}}, www.{{configCrtl.settings.domain}};
+    
+    gzip on;
+    expires modified +24h;
+
+    # cache.appcache, your document html and data
+    location ~* \.(?:manifest|appcache|html?|xml|json)$ {
+      expires -1;
+    }
+
+    # Feed
+    location ~* \.(?:rss|atom)$ {
+      expires 1h;
+      add_header Cache-Control "public";
+    }
+
+    # Media: images, icons, video, audio, HTC
+    location ~* \.(?:jpg|jpeg|gif|png|ico|cur|gz|svg|svgz|mp4|ogg|ogv|webm|htc)$ {
+      expires modified +24h;
+      add_header Cache-Control "public";
+    }
+
+    # CSS and Javascript
+    location ~* \.(?:css|js)$ {
+      expires modified;
+      add_header Cache-Control "public";
+    }
+
+    location = /favicon.ico { access_log off; log_not_found off; }
+    location /static/ {
+        root /home/{{configCrtl.settings.domain}}/{{configCrtl.settings.domain}};
+    }
+
+    location / {
+        include         uwsgi_params;
+        uwsgi_pass      unix:/tmp/{{configCrtl.settings.domain}}.sock;
+    }
+}
+</pre>

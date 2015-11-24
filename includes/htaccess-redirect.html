@@ -1,0 +1,6 @@
+<pre>
+RewriteCond %{HTTP_HOST} ^$
+RewriteRule ^{{configCrtl.settings.domain}}\.{{configCrtl.settings.tld}}$ {{configCrtl.settings.redirectURI}} [L,R=301]
+RewriteCond %{HTTP_HOST} ^$
+RewriteRule ^www\.{{configCrtl.settings.domain}}\.{{configCrtl.settings.tld}}$ {{configCrtl.settings.redirectURI}} [L,R=301]
+</pre>
